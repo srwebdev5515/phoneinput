@@ -1,0 +1,18 @@
+<div class="phone-input">
+  <p-dropdown [options]="countries | async"
+    [(ngModel)]="selectedCountry"
+    [filter]="true"
+    [disabled]="disabled"
+    optionLabel="name"
+    [style]="{ 'width': '70px' }"
+  >
+    <ng-template let-item pTemplate="selectedItem">
+      + {{ item.value.callingCode }}
+    </ng-template>
+    <ng-template let-item pTemplate="item">
+      <span [ngClass]="item.value.flag"></span> {{ item.value.name }} (+{{ item.value.callingCode }})
+    </ng-template>
+  </p-dropdown>
+  <input class="phone-number form-control" [(ngModel)]="phoneNumber" [readOnly]="disabled" (ngModelChange)="onPhoneNumberChange($event)" />
+  <button class="btn btn-call btn-success btn-sm" [disabled]="this.invalid" (click)="call($event)">Call</button>
+</div>

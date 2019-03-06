@@ -1,0 +1,9 @@
+<form [formGroup]="form" (submit)="submitForm($event)">
+  <div class="form-group">
+    <app-phone-input formControlName="phone"></app-phone-input>
+  </div>
+
+  <button class="btn btn-primary btn-submit">SUBMIT</button>
+</form>
+
+<h4 *ngIf="msg">{{ msg }}</h4>
